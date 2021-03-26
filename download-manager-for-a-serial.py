@@ -1,10 +1,3 @@
-# from selenium import webdriver
-# driver = webdriver.Chrome()
-#
-# for i in range(2):
-#     driver.get(f"https://s1.irdanlod.ir/files/Serial/T/100/S03/720p/The.100.S03E0{i}.720p.Censored.Farsi.Dubbed.mp4")
-
-
 import os
 import sys
 import requests
@@ -14,20 +7,11 @@ se = int(input("sesion :"))
 ep1 = int(input("of episod :"))
 ep2 = int(input("to episod :"))
 def download(s,e):
-    # link = input("Enter download link => ")
     if s<10:
         s = "0"+str(s)
     if e<10:
         e = "0"+str(e)
-    # class oh():
-    #     def kls(__init__):
-    #         if __init__ < 10:
-    #             __init__ = "0".append(str(__init__))
-    #             return __init__
-    # e = oh()
-    # s = oh()
     link = f"https://s1.irdanlod.ir/files/Serial/T/100/S{s}/720p/The.100.S{s}E{e}.720p.Censored.Farsi.Dubbed.mp4"
-
     file_name = urlparse(link)
     file_name = file_name.path.rsplit('/', 1)[-1]
     with open(file_name, "wb") as f:
@@ -52,8 +36,6 @@ def download(s,e):
     print("\n\n\n\tDownload was compelet...")
 mainContent = requests.get(f"https://s1.irdanlod.ir/files/Serial/T/100/S{se}/720p/")
 soup = BeautifulSoup(mainContent.text,'lxml')
-
-# download(se,e)
 try:
     for ep in range(ep1,ep2+1):
         download(se,ep)
